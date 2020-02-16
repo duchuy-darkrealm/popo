@@ -1,6 +1,8 @@
 # popo
 Make Repeat Text From Exel
 
+Important: This use Openpyxl library, so it is required to install Openpyxl first
+
 I made this project from an idea of "Automate the Boring Stuff with Python" of Al Sweigart. When coding a web using SpringBoot and JDBC, I often meet some kind of repeat text, which is thoundsands of line. Example:
 
     @Override
