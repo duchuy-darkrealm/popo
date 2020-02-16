@@ -40,20 +40,22 @@ I made this project from an idea of "Automate the Boring Stuff with Python" of A
                 jdbc.update(sql, params);
                 return 0;
     }
+
 With this program, this crazy stuf can the sorten to:
-    @Override
-    @Transactional(rollbackFor = Exception.class)
-    public Integer addNewUser(UserDto user) throws DataAccessException {
-          String sql = "INSERT INTO database (" +
-                <loop $data = data.xlsx>
-                ", ${name} " +
-                </loop>
-                <loop $data = data.xlsx>
-                params.put("${name}", user.get${capitalize(name)}());
-                </loop>
-                jdbc.update(sql, params);
-                return 0;
-                
-                //12 lines
+
+        @Override
+        @Transactional(rollbackFor = Exception.class)
+        public Integer addNewUser(UserDto user) throws DataAccessException {
+              String sql = "INSERT INTO database (" +
+                    <loop $data = data.xlsx>
+                    ", ${name} " +
+                    </loop>
+                    <loop $data = data.xlsx>
+                    params.put("${name}", user.get${capitalize(name)}());
+                    </loop>
+                    jdbc.update(sql, params);
+                    return 0;
+
+                    //12 lines
  
  
