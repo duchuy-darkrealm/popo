@@ -2,13 +2,6 @@ import sys
 from myopenpyxl import MyOpenpyxl
 from openpyxl import Workbook
 
-
-DATA_FILE_NAME = "data.xlsx"
-TEMPLATE_FILE_NAME = "template.txt"
-RESULT_FILE_NAME = "result.txt"
-
-LOOP_TIME = 4
-
 def getParamList(string, tag):
     string = string.replace("<" + tag,"")
     string = string.replace(">","")
@@ -116,7 +109,6 @@ else:
 
 f = open(TEMPLATE_FILE_NAME,"r",encoding="utf-8")
 lines = f.readlines()
-rows = MyOpenpyxl().readValue(DATA_FILE_NAME)
 
 while True:
     lines, result = findMarkup()
