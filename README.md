@@ -61,3 +61,19 @@ With this program, this crazy stuf can the sorten to:
  
 This will make save hours of coding
 
+Loop syntax:
+    
+                    <loop $data = data.xlsx>
+                    // Every thing between this will loop
+                    // data.xlsx is source data for looping
+                    </loop>
+Variable syntax: This will print alternately value in "name" column                    
+                     ${name} 
+
+Function with variable:
+    ${uppercase(name)} 
+    ${lowercase(name)} 
+    ${capitalize(name)}
+
+New line is a special variable: 
+    ${newline}
