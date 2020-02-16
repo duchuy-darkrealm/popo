@@ -43,7 +43,7 @@ I made this project from an idea of "Automate the Boring Stuff with Python" of A
                 return 0;
     }
 
-With this program, this crazy stuf can the sorten to:
+With this program, this crazy stuff can the shorten to:
 
         @Override
         @Transactional(rollbackFor = Exception.class)
