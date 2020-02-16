@@ -1,0 +1,11 @@
+List of Candidate
+
+This is list of candidate:
+
+<loop $data = data.xlsx>
+${capitalize(name)} from ${region}
+Date of birth: ${date}
+${newline}
+</loop>
+
+Welcome our candidate
