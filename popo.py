@@ -2,6 +2,10 @@ import sys
 from myopenpyxl import MyOpenpyxl
 from openpyxl import Workbook
 
+DATA_FILE_NAME = "data.xlsx"
+TEMPLATE_FILE_NAME = "template.txt"
+RESULT_FILE_NAME = "result.txt"
+
 def getParamList(string, tag):
     string = string.replace("<" + tag,"")
     string = string.replace(">","")
@@ -28,9 +32,28 @@ def replaceString(row,string):
         string = string.replace("${uppercase(" + str(key) + ")}",str(row[key]).upper())
         string = string.replace("${lowercase(" + str(key) + ")}",str(row[key]).lower())
         string = string.replace("${capitalize(" + str(key) + ")}",str(row[key]).capitalize())
+        string = string.replace("${camelize(" + str(key) + ")}",camelize(str(row[key])))
+        string = string.replace("${uppercamelize(" + str(key) + ")}",uppercamelize(str(row[key])))
         
     string = string.replace("${newline}","")
     return string
+
+def camelize(string):
+    words = string.split("_")
+    result=""
+    for i in range(len(words)):
+        if i == 0:
+            result += words[i]
+        else:
+            result += words[i].capitalize()
+    return result
+
+def uppercamelize(string):
+    words = string.split("_")
+    result = ""
+    for i in range(len(words)):
+        result += words[i].capitalize()
+    return result
 
 def findMarkup():
     result = []
@@ -53,7 +76,6 @@ def findMarkup():
     for i in range(0,end-1):
         if isContainTag(lines[i],"loop"):
             start = i
-            
             
     print("Execute loop in line: " + str(start) + "-" + str(end))
     #save the result with a loop from start to end
@@ -109,6 +131,7 @@ else:
 
 f = open(TEMPLATE_FILE_NAME,"r",encoding="utf-8")
 lines = f.readlines()
+rows = MyOpenpyxl().readValue(DATA_FILE_NAME)
 
 while True:
     lines, result = findMarkup()
